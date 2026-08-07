@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>감정노동 존중주간 · 부천다움 2026</title>
+<meta name="description" content="2026 감정노동 존중주간(부천다움) — 참여기관 신청, 존중시민 추천 안내">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --purple:#4B2E83;
+    --purple-deep:#301C55;
+    --purple-soft:#EFE9F7;
+    --teal:#0E9C93;
+    --teal-deep:#0A6E68;
+    --sky:#2E79D8;
+    --yellow:#FFC93C;
+    --paper:#FBF9F6;
+    --ink:#241B2F;
+    --ink-soft:#5B5468;
+    --line:rgba(36,27,47,.12);
+    --white:#FFFFFF;
+    --radius:18px;
+    --maxw:960px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;}
+  p{margin:0;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:13px;font-weight:700;letter-spacing:.02em;
+    color:var(--teal-deep);
+    background:rgba(14,156,147,.1);
+    padding:6px 14px;border-radius:100px;
+    margin-bottom:14px;
+  }
+
+  /* ===== 워드마크(2x2 블록 로고) ===== */
+  .mark{display:inline-flex;align-items:center;gap:3px;}
+  .mark-grid{
+    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+    width:44px;height:44px;border-radius:6px;overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+  }
+  .mark-grid span{
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:800;
+  }
+  .mark-grid .c1{background:var(--teal);color:#fff;}
+  .mark-grid .c2{background:var(--purple);color:#fff;}
+  .mark-grid .c3{background:var(--purple);color:#fff;}
+  .mark-grid .c4{background:var(--teal);color:#fff;}
+  .mark-flag{
+    width:14px;height:44px;
+    background:var(--purple-deep);
+    clip-path:polygon(0 0, 100% 15%, 100% 85%, 0 100%);
+  }
+  .mark-word{font-weight:800;font-size:15px;color:var(--ink);white-space:nowrap;}
+  .mark.small .mark-grid{width:30px;height:30px;border-radius:4px;}
+  .mark.small .mark-grid span{font-size:9px;}
+  .mark.small .mark-flag{width:9px;height:30px;}
+
+  /* ===== 베타 표시 ===== */
+  .beta-strip{
+    background:var(--yellow);color:var(--purple-deep);
+    text-align:center;font-size:12.5px;font-weight:700;
+    padding:8px 14px;letter-spacing:-.01em;
+  }
+  .beta-badge{
+    font-size:10px;font-weight:800;letter-spacing:.04em;color:#fff;
+    background:var(--purple);padding:3px 8px;border-radius:100px;
+  }
+
+  /* ===== 헤더 ===== */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,249,246,.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  header.site .bar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 22px;max-width:var(--maxw);margin:0 auto;
+  }
+  header.site nav{display:none;}
+  header.site .cta-mini{
+    font-size:13px;font-weight:700;color:#fff;background:var(--purple);
+    padding:9px 16px;border-radius:100px;text-decoration:none;
+    white-space:nowrap;
+  }
+  @media(min-width:760px){
+    header.site nav{display:flex;gap:22px;font-size:14px;font-weight:600;color:var(--ink-soft);}
+    header.site nav a{text-decoration:none;}
+    header.site nav a:hover{color:var(--purple);}
+  }
+
+  /* ===== 히어로 ===== */
+  .hero{
+    position:relative;overflow:hidden;
+    background:linear-gradient(120deg,var(--purple-deep) 0%,var(--purple) 45%,var(--sky) 100%);
+    color:#fff;padding:56px 0 64px;
+  }
+  .hero::before{
+    content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(255,201,60,.25) 0%,transparent 70%);
+  }
+  .hero::after{
+    content:"";position:absolute;left:-80px;bottom:-100px;width:320px;height:320px;
+    background:radial-gradient(circle,rgba(14,156,147,.35) 0%,transparent 70%);
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:700;color:var(--yellow);
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+    padding:7px 14px;border-radius:100px;margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:34px;line-height:1.28;margin-bottom:16px;
+  }
+  .hero h1 .accent{color:var(--yellow);}
+  .hero .sub{font-size:16px;color:rgba(255,255,255,.85);max-width:520px;margin-bottom:30px;}
+  .hero .dateline{
+    display:flex;flex-wrap:wrap;gap:10px 22px;margin-bottom:30px;
+    font-size:14px;color:rgba(255,255,255,.92);
+  }
+  .hero .dateline b{font-weight:700;color:#fff;}
+  .hero .ddaybox{
+    display:inline-flex;align-items:baseline;gap:8px;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+    padding:10px 18px;border-radius:14px;margin-bottom:30px;
+  }
+  .hero .ddaybox .num{font-size:26px;font-weight:800;color:var(--yellow);}
+  .hero .btnrow{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;border-radius:100px;font-weight:700;font-size:15px;
+    text-decoration:none;border:none;cursor:pointer;transition:transform .15s ease;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--yellow);color:var(--purple-deep);}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.35);}
+
+  /* ===== 섹션 공통 ===== */
+  section{padding:60px 0;}
+  .section-head{margin-bottom:32px;max-width:600px;}
+  .section-head h2{font-size:25px;line-height:1.4;}
+  .section-head p{margin-top:10px;color:var(--ink-soft);font-size:15px;}
+
+  /* ===== 개요: 타임라인 ===== */
+  .timeline{
+    display:flex;overflow-x:auto;gap:0;padding-bottom:10px;
+    scrollbar-width:thin;
+  }
+  .timeline::-webkit-scrollbar{height:6px;}
+  .timeline::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px;}
+  .tl-item{
+    flex:0 0 auto;width:150px;padding:0 16px 0 0;position:relative;
+  }
+  .tl-item::before{
+    content:"";position:absolute;top:8px;left:0;right:16px;height:2px;background:var(--line);
+  }
+  .tl-item:last-child::before{background:transparent;}
+  .tl-dot{
+    width:9px;height:9px;border-radius:50%;background:var(--purple);margin-bottom:14px;position:relative;z-index:1;
+  }
+  .tl-item.now .tl-dot{background:var(--yellow);width:12px;height:12px;box-shadow:0 0 0 4px rgba(255,201,60,.25);}
+  .tl-year{font-size:13px;font-weight:800;color:var(--purple);margin-bottom:4px;}
+  .tl-desc{font-size:13px;color:var(--ink-soft);line-height:1.5;}
+
+  /* ===== 서사: 스탯 ===== */
+  .story{background:var(--purple-soft);}
+  .stat-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+  @media(min-width:640px){.stat-grid{grid-template-columns:1fr 1fr;}}
+  .stat-card{
+    background:#fff;border-radius:var(--radius);padding:26px 24px;
+    border:1px solid var(--line);
+  }
+  .stat-card .num{
+    font-size:38px;font-weight:800;color:var(--purple);line-height:1;margin-bottom:10px;
+    display:flex;align-items:baseline;gap:4px;
+  }
+  .stat-card .num small{font-size:16px;font-weight:700;}
+  .stat-card .desc{font-size:14px;color:var(--ink-soft);}
+  .story-note{
+    margin-top:22px;padding:20px 22px;background:var(--purple-deep);color:#fff;
+    border-radius:var(--radius);font-size:14px;line-height:1.7;
+  }
+  .story-note b{color:var(--yellow);}
+
+  /* ===== 프로그램 ===== */
+  .program-list{display:flex;flex-direction:column;gap:14px;}
+  .program-card{
+    display:flex;gap:18px;background:#fff;border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px;
+  }
+  .program-card .date-badge{
+    flex:0 0 auto;width:64px;height:64px;border-radius:14px;
+    background:var(--teal);color:#fff;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+  }
+  .program-card.alt .date-badge{background:var(--purple);}
+  .program-card.week .date-badge{background:var(--sky);}
+  .date-badge .d{font-size:20px;font-weight:800;line-height:1;}
+  .date-badge .m{font-size:11px;margin-top:2px;}
+  .program-body h3{font-size:17px;margin-bottom:6px;}
+  .program-body .time{font-size:13px;font-weight:700;color:var(--teal-deep);margin-bottom:8px;display:block;}
+  .program-body p{font-size:14px;color:var(--ink-soft);}
+  .program-body ul{margin:8px 0 0;padding-left:18px;font-size:14px;color:var(--ink-soft);}
+  .program-body li{margin-bottom:3px;}
+  .tbd{
+    display:inline-block;font-size:12px;font-weight:700;color:#B5750B;
+    background:#FFF4DC;padding:3px 10px;border-radius:100px;margin-top:8px;
+  }
+
+  .attendee-row{display:flex;gap:8px;margin-bottom:8px;}
+  .attendee-row input{flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:9px;font-size:13px;font-family:inherit;background:var(--paper);}
+  .attendee-row input.title{flex:1.6;}
+  .attendee-row .rm{
+    flex:0 0 auto;width:36px;height:36px;border-radius:9px;border:1px solid var(--line);
+    background:#fff;color:#B23A3A;font-weight:800;cursor:pointer;
+  }
+
+  /* ===== 신청 섹션 ===== */
+  .apply{background:var(--purple-deep);color:#fff;}
+  .apply .section-head p{color:rgba(255,255,255,.7);}
+  .apply .section-head h2{color:#fff;}
+  .tabs{
+    display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap;
+  }
+  .tab-btn{
+    flex:1 1 auto;min-width:150px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
+    color:rgba(255,255,255,.75);padding:14px 16px;border-radius:14px;
+    font-size:14px;font-weight:700;cursor:pointer;text-align:left;
+    transition:all .15s ease;
+  }
+  .tab-btn small{display:block;font-weight:500;font-size:12px;margin-top:3px;color:rgba(255,255,255,.5);}
+  .tab-btn.active{background:#fff;color:var(--purple-deep);}
+  .tab-btn.active small{color:var(--ink-soft);}
+  .tab-btn.closed{opacity:.5;}
+  .tab-btn.closed::after{content:" · 마감";font-weight:800;color:var(--yellow);}
+
+  .form-panel{
+    display:none;background:#fff;color:var(--ink);border-radius:var(--radius);
+    padding:26px 24px 28px;
+  }
+  .form-panel.active{display:block;}
+  .deadline-flag{
+    display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;
+    color:var(--teal-deep);background:rgba(14,156,147,.1);
+    padding:9px 14px;border-radius:10px;margin-bottom:20px;
+  }
+  .deadline-flag.warn{color:#B5750B;background:#FFF4DC;}
+  .deadline-flag.closed{color:#B23A3A;background:#FBE6E6;}
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;
+  }
+  .field .req{color:#C1443A;}
+  .field input[type=text],
+  .field input[type=tel],
+  .field input[type=email],
+  .field input[type=number],
+  .field textarea,
+  .field select{
+    width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;
+    font-size:14px;font-family:inherit;color:var(--ink);background:var(--paper);
+  }
+  .field textarea{resize:vertical;min-height:80px;}
+  .field input:focus,.field textarea:focus,.field select:focus{
+    outline:2px solid var(--teal);outline-offset:1px;
+  }
+  .check-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;font-size:14px;}
+  .check-row input{margin-top:3px;flex:0 0 auto;}
+  .check-row.locked{color:var(--ink-soft);}
+  .check-row .tag-req{
+    font-size:11px;font-weight:800;color:var(--teal-deep);background:rgba(14,156,147,.12);
+    padding:1px 7px;border-radius:100px;margin-left:6px;
+  }
+  .two-col{display:grid;grid-template-columns:1fr;gap:16px;}
+  @media(min-width:600px){.two-col{grid-template-columns:1fr 1fr;}}
+  .consent-box{
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;margin:20px 0;font-size:12.5px;color:var(--ink-soft);line-height:1.6;
+    max-height:120px;overflow-y:auto;
+  }
+  .submit-btn{
+    width:100%;padding:15px;border-radius:12px;border:none;
+    background:var(--purple);color:#fff;font-size:15px;font-weight:700;cursor:pointer;
+    transition:opacity .15s ease;
+  }
+  .submit-btn:disabled{opacity:.4;cursor:not-allowed;}
+  .status-msg{
+    margin-top:14px;font-size:14px;font-weight:600;padding:12px 14px;border-radius:10px;display:none;
+  }
+  .status-msg.show{display:block;}
+  .status-msg.ok{background:rgba(14,156,147,.12);color:var(--teal-deep);}
+  .status-msg.err{background:#FBE6E6;color:#B23A3A;}
+
+  /* ===== 푸터 ===== */
+  footer{background:var(--ink);color:rgba(255,255,255,.65);padding:36px 0;font-size:13px;line-height:1.9;}
+  footer .fmark{margin-bottom:16px;}
+  footer a{text-decoration:none;color:rgba(255,255,255,.85);}
+  footer .foot-org{color:rgba(255,255,255,.85);font-weight:600;}
+
+  @media(min-width:760px){
+    .hero h1{font-size:44px;}
+    .hero .sub{font-size:17px;}
+    section{padding:84px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="beta-strip">🚧 내용 준비 중인 베타(초안) 페이지입니다 · 문구·구성은 계속 업데이트됩니다</div>
+
+<header class="site">
+  <div class="bar">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div class="mark small">
+        <div class="mark-grid"><span class="c1">존</span><span class="c2">중</span><span class="c3">주</span><span class="c4">간</span></div>
+        <div class="mark-flag"></div>
+      </div>
+      <span class="beta-badge">BETA</span>
+    </div>
+    <nav>
+      <a href="#about">부천다움이란</a>
+      <a href="#program">프로그램</a>
+      <a href="#apply">신청</a>
+    </nav>
+    <a href="#apply" class="cta-mini">참여 신청</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">🦋 감정노동 존중을 당연한 가치로</span>
+    <h1>2026 감정노동 존중주간<br><span class="accent">부천다움</span>과 함께합니다</h1>
+    <p class="sub">일하는 사람 둘 가운데 한 명이 감정노동자인 도시, 부천. 서로를 존중하는 마음이 당연한 일상이 되도록 지역사회가 함께 만들어가는 치유와 회복의 한 주입니다.</p>
+    <div class="dateline">
+      <span>📅 <b>부천다움 포럼</b> 2026.10.15.(목) 14:30</span>
+      <span>🎉 <b>기념식</b> 2026.10.15.(목) 16:00</span>
+      <span>📍 <b>장소</b> 부천시일쉼지원센터 다목적실</span>
+      <span>🗓️ <b>존중주간</b> 2026.10.15.(목) ~ 10.21.(수)</span>
+    </div>
+    <div class="ddaybox">
+      <span class="num" id="ddayNum">D-00</span>
+      <span>존중주간 시작까지</span>
+    </div>
+    <div class="btnrow">
+      <a href="#apply" class="btn btn-primary">참여기관 · 존중시민 신청하기</a>
+      <a href="#about" class="btn btn-ghost">부천다움 알아보기</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">ABOUT</span>
+      <h2>부천다움, 어디까지 왔나요</h2>
+      <p>부천상공회의소·부천시일쉼지원센터·한국노총 부천김포지역지부가 2022년 업무협약을 시작으로 함께 걸어온 길입니다.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2022.9</div><div class="tl-desc">감정노동자 지원 및 ESG 문화확산 업무협약</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2023.8</div><div class="tl-desc">부천지역 ESG 인식조사</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2024.3</div><div class="tl-desc">감정노동 실태·인식조사</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2024.4</div><div class="tl-desc">부천다움 선포식 및 토론회</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-desc">감정노동 존중주간 · 28개 기관 참여, 존중시민 2,855명 확산</div></div>
+      <div class="tl-item now"><div class="tl-dot"></div><div class="tl-year">2026</div><div class="tl-desc">감정노동 존중주간, 지역사회와 다시 한 걸음</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">WHY 부천다움</span>
+      <h2>존댓말은 기본, 정중함은 품격</h2>
+      <p>감정노동은 특별한 누군가의 일이 아니라, 우리 모두가 매일 주고받는 '감정노동사회'의 이야기입니다.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="num">92<small>%</small></div>
+        <div class="desc">부천지역 감정노동자 실태조사에서 감정부조화 위험 수준으로 확인된 비율. 보호체계는 아직 충분하지 않습니다.</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">1/2</div>
+        <div class="desc">일하는 사람 둘 가운데 한 명이 감정노동자인 부천. 감정노동의 수행자이자 대상자, 목격자로서 모두가 문제 해결의 주체입니다.</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">28<small>개</small></div>
+        <div class="desc">2025년 존중주간 공동 캠페인에 함께한 기관·단체 수. 시민 10,700여 명에게 존중의 가치가 전해졌습니다.</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">8<small>주년</small></div>
+        <div class="desc">감정노동자 보호법(산업안전보건법 제41조) 제정 이후, 지역사회가 실질적인 변화를 함께 만들어가는 시간입니다.</div>
+      </div>
+    </div>
+    <div class="story-note">
+      감정노동 존중은 거창한 결심이 아니어도 괜찮습니다. <b>따뜻한 인사, 존댓말, "고맙습니다" 한마디</b>면 충분합니다. 부천다움은 그 작은 존중이 쌓여 모두가 안전하고 행복하게 일할 수 있는 도시를 만들어가는 움직임입니다.
+    </div>
+  </div>
+</section>
+
+<section id="program">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">PROGRAM</span>
+      <h2>존중주간, 이렇게 진행됩니다</h2>
+      <p>포럼과 기념식으로 문을 열고, 한 주간 지역 곳곳에서 존중의 움직임이 이어집니다.</p>
+    </div>
+    <div class="program-list">
+      <div class="program-card">
+        <div class="date-badge"><span class="d">15</span><span class="m">10월</span></div>
+        <div class="program-body">
+          <h3>부천다움 포럼</h3>
+          <span class="time">2026.10.15.(목) 14:30 · 부천시일쉼지원센터 다목적실</span>
+          <p>지역사회가 함께 만들어가는 감정노동 존중 부천다움을 주제로 한 발제와 토론이 진행됩니다.</p>
+          <span class="tbd">발제·토론 구성 추후 공개</span>
+        </div>
+      </div>
+      <div class="program-card alt">
+        <div class="date-badge"><span class="d">15</span><span class="m">10월</span></div>
+        <div class="program-body">
+          <h3>감정노동존중주간 기념식</h3>
+          <span class="time">2026.10.15.(목) 16:00 · 부천시일쉼지원센터 다목적실</span>
+          <p>존중주간 공동 선포와 함께 부천다움·부천시민다움의 한 해를 나누고, 존중시민 감사장을 전달합니다.</p>
+        </div>
+      </div>
+      <div class="program-card week">
+        <div class="date-badge"><span class="d">15<br>–21</span><span class="m">10월</span></div>
+        <div class="program-body">
+          <h3>감정노동존중주간 운영</h3>
+          <span class="time">2026.10.15.(목) ~ 10.21.(수)</span>
+          <p>참여기관 공동 캠페인이 온·오프라인으로 함께 진행됩니다.</p>
+          <ul>
+            <li>존중주간 안내문 게시 (현수막·알림판·홈페이지)</li>
+            <li>감정노동자 응원메시지 게시</li>
+            <li>감정노동 인식개선 &lt;부천시민행동&gt; 리플렛 배포</li>
+            <li>기관별 자체 응원 이벤트 (선택)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apply" class="apply">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="background:rgba(255,201,60,.15);color:var(--yellow);">JOIN US</span>
+      <h2>존중주간에 함께해주세요</h2>
+      <p>참여 방식에 맞는 신청서를 골라 작성해주세요.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="org" id="tabBtn-org">참여기관 신청<small>기관 단위 · 기본 등록</small></button>
+      <button class="tab-btn" data-tab="task">사후 세부 과제 신청<small>참여기관 후속 · 세부 참여내용</small></button>
+      <button class="tab-btn" data-tab="citizen">존중시민 추천<small>감정노동자·기관이 시민을 추천</small></button>
+    </div>
+
+    <!-- 참여기관 신청 (formType: basic) -->
+    <form class="form-panel active" id="panel-org" data-type="basic">
+      <div class="deadline-flag" id="orgDeadlineFlag"></div>
+      <div class="two-col">
+        <div class="field"><label>기관명 <span class="req">*</span></label><input type="text" name="orgName" required></div>
+        <div class="field">
+          <label>기관 구분</label>
+          <select name="category">
+            <option value="">선택해주세요</option>
+            <option value="기업/사업장">기업/사업장</option>
+            <option value="공공기관">공공기관</option>
+            <option value="노동조합">노동조합</option>
+            <option value="시민사회단체">시민사회단체</option>
+            <option value="교육기관">교육기관</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>담당자명 <span class="req">*</span></label><input type="text" name="manager" required></div>
+      <div class="two-col">
+        <div class="field"><label>연락처 <span class="req">*</span></label><input type="tel" name="phone" placeholder="010-0000-0000" required></div>
+        <div class="field"><label>이메일 <span class="req">*</span></label><input type="email" name="email" required></div>
+      </div>
+
+      <div class="consent-box">
+        <b>기본 신청 안내</b><br>
+        여기서는 기관명·담당자 정보만 먼저 접수합니다. 현수막·리플렛 배포, 자체 활동, 참석 인원 등 구체적인 참여 내용은 접수 확인 후 <b>"사후 세부 과제 신청"</b> 탭에서 같은 기관명으로 이어서 입력해주세요.
+      </div>
+      <div class="consent-box">
+        <b>개인정보 수집·이용 동의(필수)</b><br>
+        수집 항목: 담당자명, 연락처, 이메일 / 수집 목적: 감정노동 존중주간 참여기관 접수 및 안내 / 보유 기간: 사업 종료 후 1년 / 위 사항에 동의하지 않으실 경우 신청이 제한됩니다.
+      </div>
+      <div class="check-row">
+        <input type="checkbox" class="consent-check" required>
+        <span>개인정보 수집·이용에 동의합니다. <span class="req">*</span></span>
+      </div>
+
+      <button type="submit" class="submit-btn">참여기관 신청 제출하기</button>
+      <div class="status-msg"></div>
+    </form>
+
+    <!-- 사후 세부 과제 신청 (formType: detail) -->
+    <form class="form-panel" id="panel-task" data-type="detail">
+      <div class="deadline-flag" style="background:rgba(46,121,216,.12);color:#2E579C;">참여기관 신청을 완료한 기관만 접수 가능합니다</div>
+      <div class="field">
+        <label>기관명 <span class="req">*</span></label>
+        <input type="text" name="orgName" required placeholder="기본 신청 시 입력한 기관명과 동일하게 입력해주세요">
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>존중시민 추천 의향</label>
+          <select name="recommendRespectCitizen"><option value="">선택</option><option value="예">예</option><option value="아니오">아니오</option></select>
+        </div>
+        <div class="field">
+          <label>기관 자체 응원 이벤트 진행 여부</label>
+          <select name="selfActivity" id="selfActivitySel"><option value="">선택</option><option value="예">예</option><option value="아니오">아니오</option></select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>현수막 · 배너 신청</label>
+        <select name="banner" id="bannerSel">
+          <option value="">선택</option>
+          <option value="현수막">현수막</option>
+          <option value="배너">배너 (규격 동일)</option>
+          <option value="신청안함">신청안함</option>
+        </select>
+      </div>
+      <input type="hidden" name="participateRespectCitizen" value="">
+
+      <div class="field"><label>자체 활동 계획 (진행 시)</label><textarea name="selfActivityPlan" placeholder="예: 사내 게시판 응원메시지, 고객 응대 창구 안내문 부착 등"></textarea></div>
+      <div class="field" id="bannerSizeField"><label>현수막 규격 <span class="req">*</span></label><input type="text" name="bannerSize" placeholder="예: 3m x 1m (현수막 선택 시 규격을 확인해주세요)"></div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>존중시민 리플렛 신청 수량</label>
+          <input type="number" min="0" name="leaflet" placeholder="신청 부수 입력 (신청 안 하시면 0)">
+        </div>
+        <div class="field"><label>참석 예정 인원 (포럼·기념식 합산)</label><input type="number" min="0" name="attendeeCount" id="attendeeCountInput" placeholder="명"></div>
+      </div>
+
+      <div class="field">
+        <label>신청 홍보물품 및 수량</label>
+        <input type="text" name="promoItems" placeholder="예: 미니 극세사 수건 30개">
+      </div>
+
+      <div class="field">
+        <label>참석자 명단 (직위/직책 · 이름)</label>
+        <div id="attendeeRows"></div>
+        <button type="button" id="addAttendeeRow" class="btn-ghost" style="background:none;border:1px dashed var(--line);color:var(--purple);padding:9px 14px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;">+ 참석자 추가</button>
+        <input type="hidden" name="attendees">
+      </div>
+
+      <div class="consent-box">
+        <b>개인정보 수집·이용 동의(필수)</b><br>
+        수집 항목: 기관명, 참여 세부내용 / 수집 목적: 존중주간 참여기관 세부 활동 접수 및 운영 지원 / 보유 기간: 사업 종료 후 1년.
+      </div>
+      <div class="check-row">
+        <input type="checkbox" class="consent-check" required>
+        <span>개인정보 수집·이용에 동의합니다. <span class="req">*</span></span>
+      </div>
+
+      <button type="submit" class="submit-btn">사후 세부 과제 신청 제출하기</button>
+      <div class="status-msg"></div>
+    </form>
+
+    <!-- 존중시민 추천 (formType: citizen) -->
+    <form class="form-panel" id="panel-citizen" data-type="citizen">
+      <div class="deadline-flag" style="background:rgba(14,156,147,.12);color:var(--teal-deep);">존중주간 기간 중 상시 접수 · 감사장은 기념식(10.15) 또는 기관 전달</div>
+      <p style="font-size:13px;color:var(--ink-soft);margin-bottom:18px;">특별한 미담이나 사례가 아니어도 괜찮습니다. 감정노동자 자신에게 힘이 되었던 고객, 민원인, 시민을 추천해주세요.</p>
+
+      <div class="field"><label>기관명 (개인 추천 시 비워두세요)</label><input type="text" name="recommenderOrg" placeholder="예: OO콜센터"></div>
+
+      <div class="two-col">
+        <div class="field"><label>추천인 성명 <span class="req">*</span></label><input type="text" name="recommenderName" required></div>
+        <div class="field"><label>추천인 연락처</label><input type="tel" name="recommenderPhone" placeholder="010-0000-0000"></div>
+      </div>
+
+      <div class="two-col">
+        <div class="field"><label>존중시민(피추천인) 성명 <span class="req">*</span></label><input type="text" name="nomineeName" required></div>
+        <div class="field"><label>피추천인 연락처</label><input type="tel" name="nomineePhone" placeholder="010-0000-0000"></div>
+      </div>
+      <div class="field"><label>피추천인 근무처 · 직장</label><input type="text" name="nomineeWorkplace" placeholder="예: OO병원, OO마트 등"></div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>피추천인 구분 <span class="req">*</span></label>
+          <select name="nomineeCategory" required>
+            <option value="">선택해주세요</option>
+            <option value="청소년">청소년</option>
+            <option value="성인">성인</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>피추천인 성별</label>
+          <select name="nomineeGender">
+            <option value="">선택안함</option>
+            <option value="남">남</option>
+            <option value="여">여</option>
+          </select>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label>피추천인 연령대</label><input type="text" name="nomineeAge" placeholder="예: 20대, 40대 등"></div>
+        <div class="field"><label>기타 참고사항</label><input type="text" name="nomineeOther" placeholder="선택 입력"></div>
+      </div>
+
+      <div class="field"><label>추천 사유 · 에피소드 <span class="req">*</span></label><textarea name="reason" placeholder="어떤 순간에 존중받았다고 느끼셨나요?" required></textarea></div>
+
+      <div class="consent-box">
+        <b>개인정보 수집·이용 동의(필수)</b><br>
+        수집 항목: 추천인·피추천인 성명, 연락처, 소속, 추천 사유 / 수집 목적: 존중시민 감사장 전달 및 존중주간 캠페인 활용 / 보유 기간: 사업 종료 후 1년.
+      </div>
+      <div class="check-row">
+        <input type="checkbox" class="consent-check" required>
+        <span>개인정보 수집·이용에 동의합니다. <span class="req">*</span></span>
+      </div>
+
+      <button type="submit" class="submit-btn">존중시민 추천 제출하기</button>
+      <div class="status-msg"></div>
+    </form>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="mark small fmark">
+      <div class="mark-grid"><span class="c1">부</span><span class="c2">천</span><span class="c3">다</span><span class="c4">움</span></div>
+      <div class="mark-flag"></div>
+    </div>
+    <div class="foot-org">부천여성청소년재단(대표이사 이강인)이 운영하는 부천시일쉼지원센터</div>
+    <div>032-323-1203 · <a href="http://bcilshim.or.kr" target="_blank" rel="noopener">bcilshim.or.kr</a></div>
+    <div>부천시 원미구 장말로 107 복사골문화센터 6층</div>
+  </div>
+</footer>
+
+<script>
+  // ---------- 설정 ----------
+  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwxxV2JYZeh8WeS9MTdjqvWwxDVAf2AHbgrR-eeLJXztgZxdkltRMT7dRf4CB-avBzrVQ/exec";
+  const EVENT_START = new Date("2026-10-15T00:00:00+09:00");
+  const ORG_DEADLINE = new Date("2026-09-23T23:59:59+09:00");
+
+  // ---------- D-day ----------
+  (function ddaySetup(){
+    const el = document.getElementById('ddayNum');
+    const now = new Date();
+    const diff = Math.ceil((EVENT_START - now) / 86400000);
+    el.textContent = diff > 0 ? ("D-" + diff) : (diff === 0 ? "D-DAY" : "진행중");
+  })();
+
+  // ---------- 참여기관 신청 마감 처리 ----------
+  (function orgDeadlineSetup(){
+    const now = new Date();
+    const flag = document.getElementById('orgDeadlineFlag');
+    const tabBtn = document.getElementById('tabBtn-org');
+    const panel = document.getElementById('panel-org');
+    const daysLeft = Math.ceil((ORG_DEADLINE - now) / 86400000);
+
+    if (now > ORG_DEADLINE) {
+      flag.textContent = "접수가 마감되었습니다 (마감: 2026.9.23)";
+      flag.classList.add('closed');
+      tabBtn.classList.add('closed');
+      panel.querySelectorAll('input, textarea, select, button[type=submit]').forEach(el => el.disabled = true);
+    } else if (daysLeft <= 7) {
+      flag.textContent = `마감이 얼마 남지 않았어요 · 2026.9.23.(수)까지 (D-${daysLeft})`;
+      flag.classList.add('warn');
+    } else {
+      flag.textContent = `신청 마감 · 2026.9.23.(수) (D-${daysLeft})`;
+    }
+  })();
+
+  // ---------- 참석자 명단 추가/삭제 ----------
+  (function attendeeRowsSetup(){
+    const wrap = document.getElementById('attendeeRows');
+    const addBtn = document.getElementById('addAttendeeRow');
+    if(!wrap || !addBtn) return;
+
+    function addRow(title='', name=''){
+      const row = document.createElement('div');
+      row.className = 'attendee-row';
+      row.innerHTML = `
+        <input type="text" class="title" placeholder="직위/직책" value="${title}">
+        <input type="text" class="name" placeholder="이름" value="${name}">
+        <button type="button" class="rm">×</button>`;
+      row.querySelector('.rm').addEventListener('click', ()=>{ row.remove(); });
+      wrap.appendChild(row);
+    }
+    addBtn.addEventListener('click', ()=> addRow());
+    addRow(); // 기본 1행 제공
+
+    const form = wrap.closest('form');
+    form.addEventListener('submit', ()=>{
+      const hidden = form.querySelector('input[name="attendees"]');
+      const rows = [...wrap.querySelectorAll('.attendee-row')].map(r=>{
+        const t = r.querySelector('.title').value.trim();
+        const n = r.querySelector('.name').value.trim();
+        if(!t && !n) return '';
+        return (t ? t + ' ' : '') + n;
+      }).filter(Boolean);
+      hidden.value = rows.join(', ');
+    }, true);
+  })();
+
+  // ---------- 현수막/배너 선택에 따라 규격 입력칸 표시 ----------
+  (function bannerFieldToggle(){
+    const sel = document.getElementById('bannerSel');
+    const sizeField = document.getElementById('bannerSizeField');
+    const sizeInput = sizeField.querySelector('input[name="bannerSize"]');
+    function sync(){
+      if(sel.value === '현수막'){
+        sizeField.style.display = '';
+        sizeInput.placeholder = '예: 3m x 1m (현수막 선택 시 규격을 확인해주세요)';
+      } else if(sel.value === '배너'){
+        sizeField.style.display = 'none';
+        sizeInput.value = '';
+      } else {
+        sizeField.style.display = 'none';
+        sizeInput.value = '';
+      }
+    }
+    sel.addEventListener('change', sync);
+    sync();
+  })();
+
+  // ---------- 탭 전환 ----------
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ---------- 동의 체크 -> 제출버튼 게이트 ----------
+  document.querySelectorAll('.form-panel').forEach(form=>{
+    const consent = form.querySelector('.consent-check');
+    const submitBtn = form.querySelector('.submit-btn');
+    if(!consent) return;
+    const sync = ()=>{ if(!submitBtn.disabled || consent.checked) submitBtn.disabled = !consent.checked; };
+    if(!submitBtn.disabled){ submitBtn.disabled = true; }
+    consent.addEventListener('change', ()=>{ submitBtn.disabled = !consent.checked; });
+  });
+
+  // ---------- 제출 처리 ----------
+  document.querySelectorAll('.form-panel').forEach(form=>{
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const statusEl = form.querySelector('.status-msg');
+      const submitBtn = form.querySelector('.submit-btn');
+      const consent = form.querySelector('.consent-check');
+
+      if(consent && !consent.checked){
+        statusEl.textContent = "개인정보 수집·이용에 동의해야 제출할 수 있어요.";
+        statusEl.className = "status-msg show err";
+        return;
+      }
+
+      const payload = { formType: form.dataset.type, submittedAt: new Date().toISOString() };
+      new FormData(form).forEach((v,k)=>{ payload[k] = v; });
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "제출 중...";
+
+      try {
+        // Apps Script doPost가 JSON.parse(e.postData.contents)로 파싱하므로
+        // Content-Type은 text/plain으로 보내 프리플라이트를 피하고, 본문은 JSON 문자열로 전송합니다.
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {'Content-Type':'text/plain;charset=utf-8'},
+          body: JSON.stringify(payload)
+        });
+        statusEl.textContent = "접수되었습니다. 감사합니다 — 담당자가 확인 후 안내드릴게요.";
+        statusEl.className = "status-msg show ok";
+        form.reset();
+        submitBtn.textContent = "제출 완료";
+      } catch(err){
+        statusEl.textContent = "제출 중 오류가 발생했습니다. 다시 시도하거나 032-323-1203으로 연락해주세요.";
+        statusEl.className = "status-msg show err";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "다시 제출하기";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
