@@ -455,10 +455,10 @@
     </div>
     <div class="program-list">
       <div class="program-card citizen">
-        <div class="date-badge"><span class="d">~23</span><span class="m">9월</span></div>
+        <div class="date-badge"><span class="d">상시</span><span class="m">접수</span></div>
         <div class="program-body">
           <h3>존중시민 추천</h3>
-          <span class="time">2026.9.23.(수)까지 · 감정노동자·기관이 시민을 추천</span>
+          <span class="time">상시 접수 · 감정노동자·기관이 시민을 추천</span>
           <p>우리 주변의 존중시민을 찾아주세요. 감정노동자를 동등한 시민으로 존중하고, 따뜻한 말과 행동으로 소통해준 고객·민원인·시민이라면 누구든 좋습니다. 특별한 미담이 아니어도 괜찮아요.</p>
         </div>
       </div>
@@ -533,7 +533,6 @@
 
     <!-- 참여기관 신청 (formType: basic) -->
     <form class="form-panel active" id="panel-org" data-type="basic">
-      <div class="deadline-flag" id="orgDeadlineFlag"></div>
       <div class="two-col">
         <div class="field"><label>기관명 <span class="req">*</span></label><input type="text" name="orgName" required></div>
         <div class="field">
@@ -640,7 +639,6 @@
 
     <!-- 존중시민 추천 (formType: citizen) -->
     <form class="form-panel" id="panel-citizen" data-type="citizen">
-      <div class="deadline-flag" id="citizenDeadlineFlag"></div>
       <div class="citizen-intro">
         <h3>존중시민을 찾아주세요</h3>
         <p>고객을 응대하는 감정노동자를 동등한 시민으로 존중하고, 따뜻한 말과 행동으로 소통해준 분이 있다면 추천해주세요.</p>
@@ -721,8 +719,6 @@
   // ---------- 설정 ----------
   const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwxxV2JYZeh8WeS9MTdjqvWwxDVAf2AHbgrR-eeLJXztgZxdkltRMT7dRf4CB-avBzrVQ/exec";
   const EVENT_START = new Date("2026-10-15T00:00:00+09:00");
-  const ORG_DEADLINE = new Date("2026-09-18T23:59:59+09:00");
-  const CITIZEN_DEADLINE = new Date("2026-09-23T23:59:59+09:00");
 
   // ---------- D-day ----------
   (function ddaySetup(){
@@ -730,48 +726,6 @@
     const now = new Date();
     const diff = Math.ceil((EVENT_START - now) / 86400000);
     el.textContent = diff > 0 ? ("D-" + diff) : (diff === 0 ? "D-DAY" : "진행중");
-  })();
-
-  // ---------- 참여기관 신청 마감 처리 ----------
-  (function orgDeadlineSetup(){
-    const now = new Date();
-    const flag = document.getElementById('orgDeadlineFlag');
-    const tabBtn = document.getElementById('tabBtn-org');
-    const panel = document.getElementById('panel-org');
-    const daysLeft = Math.ceil((ORG_DEADLINE - now) / 86400000);
-
-    if (now > ORG_DEADLINE) {
-      flag.textContent = "접수가 마감되었습니다 (마감: 2026.9.18)";
-      flag.classList.add('closed');
-      tabBtn.classList.add('closed');
-      panel.querySelectorAll('input, textarea, select, button[type=submit]').forEach(el => el.disabled = true);
-    } else if (daysLeft <= 7) {
-      flag.textContent = `마감이 얼마 남지 않았어요 · 2026.9.18.(금)까지 (D-${daysLeft})`;
-      flag.classList.add('warn');
-    } else {
-      flag.textContent = `신청 마감 · 2026.9.18.(금) (D-${daysLeft})`;
-    }
-  })();
-
-  // ---------- 존중시민 추천 마감 처리 ----------
-  (function citizenDeadlineSetup(){
-    const now = new Date();
-    const flag = document.getElementById('citizenDeadlineFlag');
-    const tabBtn = document.getElementById('tabBtn-citizen');
-    const panel = document.getElementById('panel-citizen');
-    const daysLeft = Math.ceil((CITIZEN_DEADLINE - now) / 86400000);
-
-    if (now > CITIZEN_DEADLINE) {
-      flag.textContent = "추천 접수가 마감되었습니다 (마감: 2026.9.23)";
-      flag.classList.add('closed');
-      tabBtn.classList.add('closed');
-      panel.querySelectorAll('input, textarea, select, button[type=submit]').forEach(el => el.disabled = true);
-    } else if (daysLeft <= 7) {
-      flag.textContent = `추천 마감이 얼마 남지 않았어요 · 2026.9.23.(수)까지 (D-${daysLeft})`;
-      flag.classList.add('warn');
-    } else {
-      flag.textContent = `존중시민 추천 마감 · 2026.9.23.(수) (D-${daysLeft})`;
-    }
   })();
 
   // ---------- 참석자 명단 추가/삭제 ----------
