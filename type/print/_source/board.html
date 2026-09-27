@@ -17,31 +17,30 @@
   }
 
   /* ---- 머리 ---- */
-  .top{display:flex;align-items:flex-start;gap:14mm}
-  .top .t{flex:1 1 auto}
+  .top{display:block}
+  .top .t{width:100%}
   .kick{font-size:11mm;font-weight:700;letter-spacing:-.02em;color:#D9D2F5}
   h1{font-size:50mm;font-weight:900;letter-spacing:-.045em;line-height:1.08;margin-top:4mm}
   h1 em{font-style:normal;color:#FFDC5C}
-  .sub{margin-top:6mm;font-size:11mm;font-weight:500;line-height:1.55;color:#EDE9FB;max-width:340mm}
-  .top .logo{width:118mm;height:auto;flex:0 0 auto;background:#fff;border-radius:4mm;padding:4mm 5mm}
+  .sub{margin-top:7mm;font-size:12.5mm;font-weight:500;line-height:1.5;color:#EDE9FB;white-space:nowrap}
 
   /* ---- 안내 + QR ---- */
   .how{
-    margin-top:14mm;background:rgba(255,255,255,.10);border:0.8mm solid rgba(255,255,255,.28);
-    border-radius:9mm;padding:12mm 14mm;display:flex;align-items:center;gap:14mm;
+    margin-top:12mm;background:rgba(255,255,255,.10);border:0.7mm solid rgba(255,255,255,.28);
+    border-radius:8mm;padding:9mm 12mm;display:flex;align-items:center;gap:11mm;
   }
-  .steps{flex:1 1 auto;display:flex;flex-direction:column;gap:7mm}
-  .step{display:flex;align-items:flex-start;gap:7mm}
+  .steps{flex:1 1 auto;display:flex;flex-direction:column;gap:5mm}
+  .step{display:flex;align-items:flex-start;gap:6mm}
   .step .n{
-    flex:0 0 auto;width:15mm;height:15mm;border-radius:50%;background:#FFDC5C;color:var(--purple-deep);
-    font-size:9mm;font-weight:900;display:flex;align-items:center;justify-content:center;line-height:1;
+    flex:0 0 auto;width:12mm;height:12mm;border-radius:50%;background:#FFDC5C;color:var(--purple-deep);
+    font-size:7.5mm;font-weight:900;display:flex;align-items:center;justify-content:center;line-height:1;
   }
-  .step .x{font-size:12.5mm;font-weight:800;letter-spacing:-.03em;line-height:1.35;padding-top:1.5mm}
-  .step .x small{display:block;font-size:8.8mm;font-weight:500;color:#D9D2F5;letter-spacing:-.02em;margin-top:1.5mm}
+  .step .x{font-size:10.5mm;font-weight:800;letter-spacing:-.03em;line-height:1.3;padding-top:1mm}
+  .step .x small{display:block;font-size:7.6mm;font-weight:500;color:#D9D2F5;letter-spacing:-.02em;margin-top:1mm}
   .qrwrap{flex:0 0 auto;text-align:center}
-  .qrwrap .box{background:#fff;border-radius:6mm;padding:7mm;width:100mm;height:100mm}
-  .qrwrap svg{width:86mm;height:86mm;display:block}
-  .qrwrap p{margin-top:4mm;font-size:8mm;font-weight:800;color:#FFDC5C;letter-spacing:-.03em}
+  .qrwrap .box{background:#fff;border-radius:5mm;padding:6mm;width:84mm;height:84mm}
+  .qrwrap svg{width:72mm;height:72mm;display:block}
+  .qrwrap p{margin-top:3mm;font-size:7.4mm;font-weight:800;color:#FFDC5C;letter-spacing:-.03em}
 
   /* ---- 유형 칸 ---- */
   .grid{
@@ -95,10 +94,9 @@
     <div class="t">
       <p class="kick">감정노동 존중 · 부천시민다움</p>
       <h1>나의 <em>존중 스타일</em>은?</h1>
-      <p class="sub">감정노동은 특별한 누군가의 일이 아니라, 우리가 매일 주고받는 이야기입니다.<br>
-        오늘 나는 어떻게 대했는지 만화와 진단으로 확인해 보세요.</p>
+      <p class="sub">감정노동은 특별한 누군가의 일이 아니라 우리 모두의 일상에 있습니다.<br>
+        오늘 나는 어땠는지 만화와 진단으로 확인해보세요.</p>
     </div>
-    <img class="logo" src="logo.png" alt="부천여성청소년재단 부천시일·쉼지원센터">
   </div>
 
   <div class="how">
