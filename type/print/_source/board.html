@@ -45,9 +45,16 @@
 
   /* ---- 유형 칸 ---- */
   .grid{
-    margin-top:11mm;flex:1 1 0;min-height:0;display:grid;grid-template-columns:1fr 1fr;
-    grid-template-rows:1fr 1fr;gap:9mm;
+    margin-top:11mm;flex:1 1 0;min-height:0;position:relative;display:grid;
+    grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:9mm;
   }
+  .center-art{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-2.5deg);
+    width:246mm;background:#fff;border:4mm solid #fff;border-radius:7mm;
+    box-shadow:0 6mm 16mm rgba(20,12,50,.42);overflow:hidden;z-index:5;
+  }
+  .center-art img{display:block;width:100%;height:auto}
+
   .cell{background:#fff;border-radius:8mm;padding:10mm 10mm 0;display:flex;flex-direction:column;overflow:hidden}
   .tag{
     align-self:flex-start;border-radius:99mm;padding:4mm 11mm;font-size:16mm;font-weight:900;
@@ -55,19 +62,32 @@
   }
   .c1 .tag{background:var(--g)} .c2 .tag{background:var(--b)}
   .c3 .tag{background:var(--y)} .c4 .tag{background:var(--p)}
+  .c2, .c4{text-align:right}
+  .c2 .tag, .c4 .tag{align-self:flex-end}
+  .c1 .area span, .c3 .area span{margin-left:10mm;margin-right:auto}
+  .c2 .area span, .c4 .area span{margin-right:10mm;margin-left:auto}
   .cell .quote{margin-top:4mm;font-size:10mm;font-weight:800;color:var(--purple);letter-spacing:-.03em}
   .cell .desc{margin-top:2mm;font-size:8.4mm;font-weight:500;color:#5B5468;letter-spacing:-.02em}
   .cell .area{
     flex:1 1 auto;margin:6mm -10mm 0;border-top:0.6mm dashed #D8D4E4;
-    display:flex;align-items:flex-start;justify-content:center;padding-top:5mm;
+    display:flex;align-items:flex-start;padding-top:5mm;
   }
   .cell .area span{font-size:8mm;font-weight:700;color:#C3BFD2;letter-spacing:-.02em}
 
   /* ---- 꼬리 ---- */
-  .foot{margin-top:10mm;display:flex;align-items:center;gap:12mm;flex:0 0 auto}
-  .foot img{width:92mm;height:auto;border-radius:4mm}
-  .foot .txt{flex:1 1 auto;font-size:8.6mm;font-weight:500;line-height:1.6;color:#D9D2F5;letter-spacing:-.02em}
-  .foot .txt b{color:#fff;font-weight:800}
+  .foot{margin-top:11mm;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8mm}
+  .foot .line{font-size:11mm;font-weight:700;color:#EDE9FB;letter-spacing:-.03em;text-align:center}
+  .foot .line b{color:#FFDC5C;font-weight:900}
+  .logos{display:flex;align-items:stretch;gap:10mm;width:100%}
+  .slot{
+    flex:1 1 0;height:44mm;background:#fff;border-radius:5mm;
+    display:flex;align-items:center;justify-content:center;padding:5mm 8mm;
+  }
+  .slot img{max-width:100%;max-height:100%;width:auto;height:auto}
+  .slot.empty{
+    background:rgba(255,255,255,.10);border:1mm dashed rgba(255,255,255,.55);
+    color:#D9D2F5;font-size:8.6mm;font-weight:700;letter-spacing:-.03em;
+  }
 </style></head>
 <body>
 
@@ -94,6 +114,9 @@
   </div>
 
   <div class="grid">
+    <div class="center-art">
+      <img src="signs.png" alt="만화 속 네 가지 존중 유형">
+    </div>
     <div class="cell c1">
       <span class="tag">지지형</span>
       <p class="quote">“일단 네 편”</p>
@@ -121,12 +144,11 @@
   </div>
 
   <div class="foot">
-    <img src="signs.png" alt="">
-    <p class="txt">
-      <b>만화 「존중시민의 하루 — 존중청소년센터 밴드편」</b>과 존중유형 진단을 함께 만나보세요.<br>
-      주최 · 부천여성청소년재단 부천시일·쉼지원센터 &nbsp;|&nbsp; 공동주관 · 부천상공회의소 · 한국노총 부천김포지역지부<br>
-      문의 032-323-1203
-    </p>
+    <p class="line">만화 <b>「존중시민의 하루」</b>와 <b>존중유형 진단</b>을 함께 만나보세요</p>
+    <div class="logos">
+      <div class="slot"><img src="logo.png" alt="부천여성청소년재단 부천시일·쉼지원센터"></div>
+      <div class="slot empty">청소년센터 로고 자리</div>
+    </div>
   </div>
 
 </body></html>
