@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#4A3E92">
-<title>오늘의 존중유형 | 감정노동 존중 부천다움</title>
 <meta name="description" content="만화와 진단으로 오늘의 존중유형을 확인해 보세요. 감정노동 존중 부천다움. 청소년 시민·성인 시민 웹툰과 존중유형 진단.">
+<title>오늘의 존중유형 | 감정노동 존중 부천다움</title>
 <meta property="og:type" content="website">
 <meta property="og:title" content="오늘의 존중유형 확인해보세요">
 <meta property="og:description" content="만화와 진단으로 — 감정노동 존중 부천다움">
@@ -16,96 +16,76 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
   :root{
-    --purple:#4A3E92;
-    --purple-deep:#241A4A;
-    --purple-soft:#E9E6F7;
-    --teal:#0E9C93;
-    --teal-deep:#0A6E68;
-    --yellow:#FFC93C;
-    --paper:#FBF9F6;
-    --ink:#241B2F;
-    --ink-soft:#5B5468;
-    --line:rgba(36,27,47,.12);
+    --purple:#4A3E92; --purple-deep:#241A4A; --purple-soft:#E9E6F7;
+    --teal:#0E9C93; --teal-deep:#0A6E68; --yellow:#FFC93C;
+    --paper:#FBF9F6; --ink:#241B2F; --ink-soft:#5B5468; --line:rgba(36,27,47,.12);
   }
   *{box-sizing:border-box}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:Pretendard,"Noto Sans KR","Malgun Gothic",-apple-system,sans-serif;
-    -webkit-text-size-adjust:100%;
-  }
-  .wrap{max-width:900px;margin:0 auto;padding:0 20px 56px}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:Pretendard,"Noto Sans KR","Malgun Gothic",-apple-system,sans-serif;-webkit-text-size-adjust:100%}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 56px}
+  [hidden]{display:none!important}
 
   /* 머리 */
-  .top{
-    background:linear-gradient(160deg,var(--purple) 0%,var(--purple-deep) 100%);
-    color:#fff;padding:0 20px;
-  }
-  .top-in{max-width:900px;margin:0 auto;padding:34px 0 40px;text-align:center}
-  .badge{
-    display:inline-block;padding:6px 14px;border-radius:99px;
-    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
-    font-size:12.5px;font-weight:700;letter-spacing:-.01em;
-  }
-  h1{
-    margin:16px 0 0;font-size:clamp(28px,7vw,42px);font-weight:800;
-    letter-spacing:-.03em;line-height:1.24;text-wrap:balance;
-  }
+  .top{background:linear-gradient(160deg,var(--purple) 0%,var(--purple-deep) 100%);color:#fff;padding:0 20px}
+  .top-in{max-width:880px;margin:0 auto;padding:34px 0 42px;text-align:center}
+  .badge{display:inline-block;padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.28);font-size:12.5px;font-weight:700}
+  h1{margin:16px 0 0;font-size:clamp(26px,6.6vw,40px);font-weight:800;letter-spacing:-.03em;
+    line-height:1.24;text-wrap:balance}
   h1 em{font-style:normal;color:var(--yellow)}
-  .lead{
-    margin:12px auto 0;max-width:30em;font-size:clamp(14px,3.6vw,16px);
-    line-height:1.7;color:rgba(255,255,255,.88);
-  }
+  .lead{margin:12px auto 0;max-width:30em;font-size:clamp(14px,3.6vw,16px);line-height:1.7;color:rgba(255,255,255,.88)}
 
-  /* 카드 */
-  .cards{display:grid;gap:18px;grid-template-columns:1fr;margin-top:-22px}
-  @media(min-width:720px){.cards{grid-template-columns:1fr 1fr;gap:22px}}
-  .card{
-    background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;
-    box-shadow:0 14px 34px rgba(36,26,74,.12);display:flex;flex-direction:column;
+  /* 1단계 — 고르기 */
+  .pick{display:grid;gap:16px;grid-template-columns:1fr;margin-top:-24px}
+  @media(min-width:680px){.pick{grid-template-columns:1fr 1fr;gap:20px}}
+  .choice{
+    display:block;width:100%;border:1px solid var(--line);border-radius:20px;background:#fff;
+    padding:0;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;
+    box-shadow:0 14px 34px rgba(36,26,74,.12);transition:transform .15s,box-shadow .15s;
   }
-  .card-top{padding:18px 20px 0;display:flex;align-items:baseline;gap:9px}
-  .who{
-    font-size:12px;font-weight:800;letter-spacing:.02em;padding:4px 10px;border-radius:99px;
-  }
+  .choice:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(36,26,74,.18)}
+  .choice:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+  .choice img{display:block;width:100%;height:190px;object-fit:cover;object-position:50% 6%}
+  .choice .m{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 18px}
+  .choice .nm{font-size:20px;font-weight:800;letter-spacing:-.02em}
+  .choice .go{font-size:14px;font-weight:800;letter-spacing:-.02em}
+  .choice.youth .nm,.choice.youth .go{color:var(--purple)}
+  .choice.adult .nm,.choice.adult .go{color:var(--teal-deep)}
+  .choice .sub{display:block;margin-top:4px;font-size:13px;font-weight:500;color:var(--ink-soft)}
+
+  /* 2단계 — 연결 */
+  .step2{margin-top:-24px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    box-shadow:0 14px 34px rgba(36,26,74,.12)}
+  .panel .head{display:flex;align-items:baseline;gap:9px;padding:20px 22px 0}
+  .panel .who{font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px}
   .youth .who{background:var(--purple-soft);color:var(--purple)}
   .adult .who{background:#DFF3F1;color:var(--teal-deep)}
-  .card h2{margin:0;font-size:17px;font-weight:800;letter-spacing:-.02em}
-  .card .sub{margin:5px 20px 0;font-size:13px;color:var(--ink-soft);line-height:1.6}
-
-  .shot{margin:16px 20px 0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff}
-  .shot img{display:block;width:100%;height:300px;object-fit:cover;object-position:50% 6%}
-  @media(min-width:720px){.shot img{height:340px}}
-
-  .acts{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:16px 20px 20px;margin-top:auto}
-  .btn{
-    display:flex;align-items:center;justify-content:center;gap:6px;text-align:center;
-    padding:13px 10px;border-radius:12px;font-size:14.5px;font-weight:800;
-    text-decoration:none;letter-spacing:-.02em;line-height:1.2;
-  }
-  .btn-main{background:var(--purple);color:#fff}
-  .adult .btn-main{background:var(--teal)}
-  .btn-main:hover{filter:brightness(1.08)}
-  .btn-sub{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
-  .btn-sub:hover{border-color:var(--ink-soft)}
+  .panel h2{margin:0;font-size:19px;font-weight:800;letter-spacing:-.02em}
+  .panel .desc{margin:8px 22px 0;font-size:14px;color:var(--ink-soft);line-height:1.65}
+  .panel .shot{margin:16px 22px 0;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .panel .shot img{display:block;width:100%;height:auto;max-height:340px;object-fit:cover;object-position:50% 6%}
+  .acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:18px 22px 22px}
+  .btn{display:flex;align-items:center;justify-content:center;padding:15px 10px;border-radius:12px;
+    font-size:15px;font-weight:800;text-decoration:none;letter-spacing:-.02em;color:#fff}
+  .youth .btn{background:var(--purple)}
+  .adult .btn{background:var(--teal)}
+  .btn:hover{filter:brightness(1.08)}
   .btn:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+  .back{display:block;margin:16px auto 0;background:none;border:0;font:inherit;cursor:pointer;
+    font-size:14px;font-weight:700;color:var(--ink-soft);padding:8px 14px;border-radius:10px}
+  .back:hover{color:var(--ink);background:rgba(36,27,47,.05)}
+  .back:focus-visible{outline:2px solid var(--purple);outline-offset:2px}
 
   /* 설명 */
-  .why{
-    margin-top:30px;padding:22px;border-radius:18px;background:#fff;border:1px solid var(--line);
-  }
+  .why{margin-top:30px;padding:22px;border-radius:18px;background:#fff;border:1px solid var(--line)}
   .why p{margin:0;font-size:14.5px;line-height:1.8;color:var(--ink-soft)}
   .why b{color:var(--ink);font-weight:800}
-  .why .big{
-    display:block;margin-bottom:10px;font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.02em;
-  }
+  .why .big{display:block;margin-bottom:10px;font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
 
   /* 꼬리 */
   .foot{margin-top:28px;text-align:center}
-  .foot .when{
-    display:inline-flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;
-    font-size:13.5px;font-weight:700;color:var(--purple);margin-bottom:18px;
-  }
-  .foot .when span{white-space:nowrap}
   .foot img{width:190px;max-width:64%;height:auto;margin:6px auto 12px;display:block}
   .foot .org{font-size:12.5px;line-height:1.8;color:var(--ink-soft)}
   .foot a{color:var(--purple);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line)}
@@ -118,39 +98,53 @@
   <div class="top-in">
     <span class="badge">감정노동 존중 · 부천시민다움</span>
     <h1>만화와 진단으로<br><em>오늘의 존중유형</em> 확인해보세요!</h1>
-    <p class="lead">청소년용과 성인용이 따로 있습니다. 만화부터 봐도 되고, 진단부터 해도 됩니다.</p>
+    <p class="lead" id="lead">먼저 어느 쪽인지 골라 주세요.</p>
   </div>
 </header>
 
 <div class="wrap">
-  <div class="cards">
 
-    <section class="card youth">
-      <div class="card-top">
-        <span class="who">청소년 시민</span>
-        <h2>존중시민의 하루</h2>
-      </div>
-      <p class="sub">밴드 연습을 앞둔 다섯 친구의 하루. 편의점, 버스, 배달에서 마주친 순간들.</p>
-      <div class="shot"><img src="cover-youth.webp" alt="존중시민의 하루 — 존중청소년센터 밴드편 표지" width="460" height="650" loading="lazy"></div>
+  <!-- 1단계 -->
+  <div class="pick" id="step1">
+    <button class="choice youth" type="button" data-go="youth">
+      <img src="cover-youth.webp" alt="존중시민의 하루 — 존중청소년센터 밴드편" width="460" height="650">
+      <span class="m">
+        <span><span class="nm">청소년 시민</span><span class="sub">중·고등학생, 알바하는 청소년</span></span>
+        <span class="go">고르기 ›</span>
+      </span>
+    </button>
+    <button class="choice adult" type="button" data-go="adult">
+      <img src="cover-adult.webp" alt="오후 반차 — 성인편" width="460" height="650">
+      <span class="m">
+        <span><span class="nm">성인 시민</span><span class="sub">일하는 사람이자 손님인 어른</span></span>
+        <span class="go">고르기 ›</span>
+      </span>
+    </button>
+  </div>
+
+  <!-- 2단계 -->
+  <div class="step2" id="step2" hidden>
+    <section class="panel youth" id="p-youth" hidden>
+      <div class="head"><span class="who">청소년 시민</span><h2>존중시민의 하루</h2></div>
+      <p class="desc">밴드 연습을 앞둔 다섯 친구의 하루. 편의점, 버스, 배달에서 마주친 순간들.</p>
+      <div class="shot"><img src="cover-youth.webp" alt="" width="460" height="650"></div>
       <div class="acts">
-        <a class="btn btn-main" href="/ebook/youth/">만화 보기</a>
-        <a class="btn btn-main" href="https://quiz-talk.vercel.app">존중유형 진단</a>
+        <a class="btn" href="/ebook/youth/">만화 보기</a>
+        <a class="btn" href="https://quiz-talk.vercel.app">존중유형 진단</a>
       </div>
     </section>
 
-    <section class="card adult">
-      <div class="card-top">
-        <span class="who">성인 시민</span>
-        <h2>오후 반차</h2>
-      </div>
-      <p class="sub">오전에는 센터 노동자, 오후에는 시민. 수현이 겪는 여섯 번의 마주침.</p>
-      <div class="shot"><img src="cover-adult.webp" alt="오후 반차 — 성인편 표지" width="460" height="650" loading="lazy"></div>
+    <section class="panel adult" id="p-adult" hidden>
+      <div class="head"><span class="who">성인 시민</span><h2>오후 반차</h2></div>
+      <p class="desc">오전에는 센터 노동자, 오후에는 시민. 수현이 겪는 여섯 번의 마주침.</p>
+      <div class="shot"><img src="cover-adult.webp" alt="" width="460" height="650"></div>
       <div class="acts">
-        <a class="btn btn-main" href="/ebook/adult/">만화 보기</a>
-        <a class="btn btn-main" href="https://respect-citizen-adult.vercel.app">존중유형 진단</a>
+        <a class="btn" href="/ebook/adult/">만화 보기</a>
+        <a class="btn" href="https://respect-citizen-adult.vercel.app">존중유형 진단</a>
       </div>
     </section>
 
+    <button class="back" type="button" id="back">‹ 다시 고르기</button>
   </div>
 
   <section class="why">
@@ -165,11 +159,45 @@
   <footer class="foot">
     <img src="logo.png" alt="부천여성청소년재단 부천시일·쉼지원센터" width="720" height="172">
     <p class="org">
-      공동주관 · 부천상공회의소 · 부천시일쉼지원센터 · 한국노총 부천김포지역지부<br>
       문의 032-323-1203 · <a href="/">부천다움 알아보기</a>
     </p>
   </footer>
 </div>
 
+<script>
+(function(){
+  var step1=document.getElementById('step1'), step2=document.getElementById('step2');
+  var lead=document.getElementById('lead');
+  var panels={youth:document.getElementById('p-youth'), adult:document.getElementById('p-adult')};
+  var LEAD1='먼저 어느 쪽인지 골라 주세요.';
+  var LEAD2='만화부터 봐도 되고, 진단부터 해도 됩니다.';
+
+  function show(who){
+    if(who!=='youth' && who!=='adult'){
+      step1.hidden=false; step2.hidden=true;
+      panels.youth.hidden=true; panels.adult.hidden=true;
+      lead.textContent=LEAD1;
+      return;
+    }
+    step1.hidden=true; step2.hidden=false;
+    panels.youth.hidden=(who!=='youth');
+    panels.adult.hidden=(who!=='adult');
+    lead.textContent=LEAD2;
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.choice'), function(b){
+    b.addEventListener('click', function(){
+      location.hash = b.getAttribute('data-go');
+    });
+  });
+  document.getElementById('back').addEventListener('click', function(){
+    if(location.hash){ history.back(); } else { show(null); }
+  });
+
+  function fromHash(){ show(location.hash.replace('#','')); }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+})();
+</script>
 </body>
 </html>
