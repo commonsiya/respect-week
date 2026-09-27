@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101a3c">
+<meta name="description" content="책장 넘기듯 읽는 청소년센터 밴드편 웹북 — 감정노동 존중 부천다움">
+<title>존중시민의 하루 | 청소년센터 밴드편</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101a3c'/%3E%3Cpath d='M13 17c10-4 18-1 19 3 1-4 9-7 19-3v32c-10-3-17-1-19 3-2-4-9-6-19-3z' fill='%23ffd75e'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body>
+
+<header>
+  <button id="contentsButton" aria-label="목차 열기">☰</button>
+  <button id="autoButton" aria-pressed="false" aria-label="자동 넘김 시작">▶</button>
+  <div class="mid"><b>존중시민의 하루</b><span>존중청소년센터 밴드편</span></div>
+  <button id="speedButton" aria-label="자동 넘김 속도">6s</button>
+  <button id="zoomButton" aria-label="이 쪽 크게 보기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></button>
+  <button id="fullscreenButton" aria-label="전체 화면">⛶</button>
+</header>
+
+<main>
+  <div class="auto-bar" id="autoBar" hidden><i id="autoFill"></i></div>
+  <div class="area" id="area"><div id="book"></div></div>
+  <button class="arrow prev" id="prevButton" aria-label="이전 쪽">‹</button>
+  <button class="arrow next" id="nextButton" aria-label="다음 쪽">›</button>
+  <p class="hint" id="hint"><em>‹</em> 모서리를 끌거나 눌러서 넘겨 보세요 <em>›</em></p>
+</main>
+
+<footer>
+  <div class="progress"><i id="progressBar"></i></div>
+  <div class="meta"><strong id="pageTitle">표지</strong><span id="pageNumber">1 / 12</span></div>
+</footer>
+
+<dialog id="contentsDialog">
+  <div class="dialog-head">
+    <div><small>존중청소년센터 밴드편</small><h2>목차</h2></div>
+    <button id="closeContents" aria-label="목차 닫기">×</button>
+  </div>
+  <ol id="contentsList"></ol>
+</dialog>
+
+<div id="zoom" hidden>
+  <button id="zoomClose" aria-label="크게 보기 닫기">×</button>
+  <div id="zoomImg"></div>
+</div>
+
+<script>
+window.BOOK = {
+  dir: "pages",
+  pages: [
+    ["01.webp", "표지"],
+    ["02.webp", "등장인물"],
+    ["03.webp", "함께하는 사람들"],
+    ["04.webp", "편의점"],
+    ["05.webp", "청소년센터 예약"],
+    ["06.webp", "연습실"],
+    ["07.webp", "두 번째 곡"],
+    ["08.webp", "버스"],
+    ["09.webp", "배달"],
+    ["10.webp", "오늘 하루"],
+    ["11.webp", "다음 날"],
+    ["12.webp", "뒷표지"]
+  ]
+};
+</script>
+<script src="../assets/page-flip.browser.js"></script>
+<script src="../assets/book.js"></script>
+</body>
+</html>
