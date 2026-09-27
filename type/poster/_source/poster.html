@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<style>
+  :root{
+    --purple:#4A3E92; --purple-deep:#2B2263; --mint:#0E9C93; --mint-light:#22C3B4;
+    --gold:#FFDC5C; --ink:#241A4A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#777;font-family:"Noto Sans CJK KR","Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased}
+  .stage{display:flex;flex-direction:column;gap:26px;padding:26px;align-items:flex-start}
+
+  .pz{
+    position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(60% 45% at 14% 8%, rgba(255,255,255,.16), transparent 62%),
+      radial-gradient(52% 40% at 88% 96%, rgba(34,195,180,.42), transparent 66%),
+      linear-gradient(153deg,#3B2F80 0%,#4A3E92 30%,#2C6D92 66%,#0E9C93 100%);
+  }
+  .blob{position:absolute;border-radius:50%;pointer-events:none}
+  .b1{width:46%;aspect-ratio:1;right:-13%;top:-16%;background:radial-gradient(circle,rgba(255,220,92,.26),transparent 66%)}
+  .b2{width:52%;aspect-ratio:1;left:-20%;bottom:-22%;background:radial-gradient(circle,rgba(34,195,180,.34),transparent 64%)}
+
+  .logo{background:#fff;border-radius:var(--r,14px);padding:var(--lp,14px 18px);display:inline-block}
+  .logo img{display:block;width:100%;height:auto}
+  .kick{font-weight:700;letter-spacing:-.02em;color:#CFE8E4}
+  h1{font-weight:900;letter-spacing:-.045em;line-height:1.16;text-wrap:balance}
+  h1 mark{background:none;color:var(--gold)}
+  .sub{font-weight:500;color:#E4E0F6;letter-spacing:-.02em;line-height:1.55}
+
+  .covers{display:flex;flex:0 0 auto}
+  .covers img{border-radius:12px;border:4px solid #fff;object-fit:cover;object-position:50% 5%;
+              box-shadow:0 22px 48px rgba(14,12,44,.44)}
+
+  .btns{display:flex;gap:14px}
+  .b{display:flex;align-items:center;gap:12px;background:#fff;border-radius:999px;
+     font-weight:900;letter-spacing:-.03em;white-space:nowrap}
+  .b .who{color:var(--purple)}
+  .b.m .who{color:var(--mint)}
+  .b .go{font-weight:700;color:#6B6480;border-left:1.5px solid #DDD9E8;white-space:nowrap}
+
+  .qrbox{background:#fff;border-radius:16px;display:flex;align-items:center;gap:20px}
+  .qrbox img{display:block;border-radius:8px}
+  .qrbox .t{color:var(--ink);letter-spacing:-.03em}
+  .qrbox .t b{display:block;font-weight:900;color:var(--purple)}
+  .qrbox .t span{display:block;font-weight:600;color:#6B6480;margin-top:4px}
+
+  .tail{font-weight:600;color:#CFE8E4;letter-spacing:-.02em}
+  .tail b{color:#fff;font-weight:900}
+
+  /* ================= 세로 웹자보 1240 x 1754 ================= */
+  #v{width:1240px;height:1754px;padding:78px 76px 66px;display:flex;flex-direction:column}
+  #v .logo{--r:16px;--lp:16px 22px;width:340px;align-self:flex-start}
+  #v .kick{margin-top:34px;font-size:27px}
+  #v h1{margin-top:16px;font-size:86px}
+  #v .sub{margin-top:24px;font-size:28px}
+  #v .covers{margin-top:40px;margin-bottom:30px;gap:0;align-self:center}
+  #v .covers img{width:312px;height:441px}
+  #v .covers img:first-child{transform:rotate(-6deg)}
+  #v .covers img:last-child{transform:rotate(6deg);margin-left:-54px}
+  #v .btns{margin-top:auto;flex-direction:column;gap:16px}
+  #v .b{padding:26px 40px;font-size:34px;justify-content:center}
+  #v .b .go{font-size:24px;padding-left:20px}
+  #v .qrbox{margin-top:26px;padding:22px 30px}
+  #v .qrbox img{width:150px;height:150px}
+  #v .qrbox .t b{font-size:30px}
+  #v .qrbox .t span{font-size:22px}
+  #v .tail{margin-top:26px;font-size:24px;text-align:center}
+
+  /* ================= 가로 웹자보 1920 x 1080 ================= */
+  #h{width:1920px;height:1080px;padding:84px 96px;display:flex;align-items:center;gap:76px}
+  #h .left{flex:1 1 auto;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+  #h .logo{--r:16px;--lp:16px 24px;width:376px}
+  #h .kick{margin-top:32px;font-size:29px}
+  #h h1{margin-top:18px;font-size:96px}
+  #h .sub{margin-top:28px;font-size:30px}
+  #h .btns{margin-top:44px}
+  #h .b{padding:24px 36px;font-size:33px}
+  #h .b .go{font-size:23px;padding-left:19px}
+  #h .right{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:34px}
+  #h .covers{gap:0}
+  #h .covers img{width:300px;height:424px}
+  #h .covers img:first-child{transform:rotate(-6deg)}
+  #h .covers img:last-child{transform:rotate(6deg);margin-left:-48px}
+  #h .qrbox{padding:22px 30px}
+  #h .qrbox img{width:142px;height:142px}
+  #h .qrbox .t b{font-size:29px}
+  #h .qrbox .t span{font-size:21px}
+
+  /* ================= 카드뉴스 정사각 1080 x 1080 ================= */
+  #s{width:1080px;height:1080px;padding:66px 64px 56px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  #s .logo{--r:14px;--lp:12px 18px;width:264px}
+  #s .kick{margin-top:22px;font-size:24px}
+  #s h1{margin-top:12px;font-size:58px}
+  #s .covers{margin-top:28px;margin-bottom:26px;gap:0}
+  #s .covers img{width:200px;height:283px}
+  #s .covers img:first-child{transform:rotate(-6deg)}
+  #s .covers img:last-child{transform:rotate(6deg);margin-left:-42px}
+  #s .btns{margin-top:auto;gap:14px}
+  #s .b{padding:18px 28px;font-size:28px}
+  #s .b .go{display:none}
+  #s .qrbox{margin-top:18px;padding:16px 24px}
+  #s .qrbox img{width:104px;height:104px}
+  #s .qrbox .t{text-align:left}
+  #s .qrbox .t b{font-size:26px}
+  #s .qrbox .t span{font-size:19px}
+</style></head>
+<body><div class="stage">
+
+  <!-- 세로 웹자보 -->
+  <div class="pz" id="v">
+    <span class="blob b1"></span><span class="blob b2"></span>
+    <span class="logo"><img src="logo.png" alt=""></span>
+    <p class="kick">감정노동 존중 · 부천시민다움</p>
+    <h1>만화와 진단으로<br><mark>오늘의 존중유형</mark><br>확인해보세요!</h1>
+    <p class="sub">감정노동은 특별한 누군가의 일이 아니라 우리 모두의 일상에 있습니다.<br>
+      오늘 나는 어땠는지 만화와 진단으로 확인해보세요.</p>
+    <div class="covers"><img src="cover-youth.webp" alt=""><img src="cover-adult.webp" alt=""></div>
+    <div class="btns">
+      <span class="b"><span class="who">청소년 시민</span><span class="go">만화·진단 바로가기 ›</span></span>
+      <span class="b m"><span class="who">성인 시민</span><span class="go">만화·진단 바로가기 ›</span></span>
+    </div>
+    <div class="qrbox">
+      <img src="qr.png" alt="">
+      <span class="t"><b>QR을 찍어주세요</b><span>휴대폰으로 바로 연결됩니다</span></span>
+    </div>
+    <p class="tail">만화 <b>「존중시민의 하루」</b>와 <b>존중유형 진단</b>을 함께 만나보세요</p>
+  </div>
+
+  <!-- 가로 웹자보 -->
+  <div class="pz" id="h">
+    <span class="blob b1"></span><span class="blob b2"></span>
+    <div class="left">
+      <span class="logo"><img src="logo.png" alt=""></span>
+      <p class="kick">감정노동 존중 · 부천시민다움</p>
+      <h1>만화와 진단으로<br><mark>오늘의 존중유형</mark><br>확인해보세요!</h1>
+      <p class="sub">감정노동은 특별한 누군가의 일이 아니라 우리 모두의 일상에 있습니다.</p>
+      <div class="btns">
+        <span class="b"><span class="who">청소년 시민</span><span class="go">만화·진단 바로가기 ›</span></span>
+        <span class="b m"><span class="who">성인 시민</span><span class="go">만화·진단 바로가기 ›</span></span>
+      </div>
+    </div>
+    <div class="right">
+      <div class="covers"><img src="cover-youth.webp" alt=""><img src="cover-adult.webp" alt=""></div>
+      <div class="qrbox">
+        <img src="qr.png" alt="">
+        <span class="t"><b>QR을 찍어주세요</b><span>휴대폰으로 바로 연결됩니다</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 카드뉴스 정사각 -->
+  <div class="pz" id="s">
+    <span class="blob b1"></span><span class="blob b2"></span>
+    <span class="logo"><img src="logo.png" alt=""></span>
+    <p class="kick">감정노동 존중 · 부천시민다움</p>
+    <h1>만화와 진단으로<br><mark>오늘의 존중유형</mark><br>확인해보세요!</h1>
+    <div class="covers"><img src="cover-youth.webp" alt=""><img src="cover-adult.webp" alt=""></div>
+    <div class="btns">
+      <span class="b"><span class="who">청소년 시민</span></span>
+      <span class="b m"><span class="who">성인 시민</span></span>
+    </div>
+    <div class="qrbox">
+      <img src="qr.png" alt="">
+      <span class="t"><b>QR을 찍어주세요</b><span>휴대폰으로 바로 연결됩니다</span></span>
+    </div>
+  </div>
+
+</div></body></html>
